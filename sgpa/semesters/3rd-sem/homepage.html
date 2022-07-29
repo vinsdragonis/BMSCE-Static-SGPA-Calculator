@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="description" content="CALCULATE SGPA AND CGPA OF BMSCE RESULTS QUICKLY HERE!">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/homepage.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>BMSCE SGPA CALCULATOR</title>
+    <link rel="icon" href="/assets/images/title-image.png" type="image/icon type">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <style>
+        html,
+        body {
+            background-color: #161b22;
+        }
+    </style>
+    <script>
+        $(function() {
+            var popup = $('#mainpopup');
+            var time = $(".will-close strong");
+            var closeSeconds = $("#mainpopup").attr("data-close");
+            var openSeconds = $("#mainpopup").attr("data-open");
+            var dataSrc = $("#mainpopup").attr("data-href");
+
+
+            setTimeout(function(e) {
+
+                popup.modal('show');
+                time.html(closeSeconds);
+
+                setInterval(function() {
+                    time.html(closeSeconds);
+                    closeSeconds--;
+
+                    if (closeSeconds < 0) {
+                        popup.modal('hide');
+                    }
+
+                }, 1000)
+
+            }, openSeconds * 1000);
+
+            $.ajax({
+                url: dataSrc,
+                dataType: "html",
+                success: function(data) {
+                    $(".modal-body").html(data);
+                }
+            });
+
+
+        });
+    </script>
+    <script>
+        function bootnavbar(el = 'main_navbar', options) {
+            let defaultOption = {
+
+            }
+
+            options = {...defaultOption,
+                ...options
+            }
+
+
+            var isMobile = {
+                Android: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                    return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                },
+                any: function() {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+            this.init = function() {
+                var dropdowns = document.getElementById(el).getElementsByClassName("dropdown");
+                console.log(dropdowns);
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var dropdown = dropdowns.item(i);
+                    dropdown.addEventListener("mouseover", function() {
+                        this.classList.add('show');
+                        this.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                    });
+                    dropdown.addEventListener("mouseout", function() {
+                        this.classList.remove('show');
+                        this.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                    });
+                }
+                // document.getElementById(el).getElementsByClassName("dropdown").forEach(dropdown => {
+                //     dropdown.addEventListener("mouseover", function(){
+                //         dropdown.classList.add('show');
+                //         dropdown.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                //     });
+                //     dropdown.addEventListener("mouseout", function(){
+                //         dropdown.classList.remove('show');
+                //         dropdown.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                //     });
+                // });
+            }
+
+            this.init();
+        }
+    </script>
+</head>
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top sticky-onscroll py-0 " id="main_navbar" style="font-size: 16px;padding-top: 1rem;">
+        <div class="container-fluid ">
+            <a class="navbar-brand py-0" href="/nav-items/homepage.html" style="margin-top: 10px;margin-bottom: 0.5rem;">
+                <img id="navlogo" src="/assets/images/logo.jpg" width="25" height="25" class="d-inline-block align-top" alt="" loading="lazy">
+                <b style="color: white;" id="mybmsce"><b style="margin-top: 5px;"></b> SGPA CALCULATOR</b>
+            </a>
+            <button class="navbar-toggler py-0 btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon py-0"></span>
+            </button>
+            <div class="collapse navbar-collapse py-0" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item  active">
+                        <a class="nav-link disabled" href="/nav-items/homepage.html" id="nav_items" style="color: #84abff;"><b>HOME</b>
+                        </a>
+                    </li>
+
+                    <li class="nav-item  dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>SGPA CALCULATOR</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/1st year/sgpa-phy.html">PHYSICS CYCLE</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/1st year/sgpa-chem.html">CHEMISTRY CYCLE</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/3rd-sem.html">III SEMESTER</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/4th-sem.html">IV SEMESTER</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/5th-sem.html">V SEMESTER</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/6th-sem.html">VI SEMESTER</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/7th-sem.html">VII SEMESTER</a></li>
+                            <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/8th-sem.html">VIII SEMESTER</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item  dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b> CGPA CALCULATOR</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-cse.html">CSE BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-ise.html">ISE BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-etc.html">ETC BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-ece.html">ECE BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-eee.html">EEE BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-eie.html">EIE BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-mech.html">MECHANICAL BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-me.html">MEDICAL ELECTRONICS BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-iem.html">IEM BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-chem.html">CHEMICAL BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-civil.html">CIVIL BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-bio.html">BIOTECH BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-aiml.html">AI AND ML BRANCH</a></li>
+                            <li><a class="dropdown-item" href="/cgpa/cgpa-ae.html">AEROSPACE BRANCH</a></li>
+
+
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>% CALCULATOR</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/nav-items/cgpatoper.html">CHECK % </a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>MY PROFILE</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/nav-items/User-Profile-Cgpa.html">CGPA DATA</a></li>
+                            <li><a class="dropdown-item" href="/nav-items/User-Profile-Sgpa.html">SGPA DATA</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>HOW TO USE</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/nav-items/how-to-use.html">OPEN </a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>1ST YEARS</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/1st-year/homepage1styear.html">OPEN RESOURCES </a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" style="color: white;">
+                            <b>RESULTS</b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://results.bmsce.in/">OPEN LINK </a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="/nav-items/contactme.html" id="nav_items" style="color: white;"><b>CONTACT</b>
+                        </a>
+                    </li>
+                    <li> <button class="btn btn-danger btn-sm" onclick="mainApp.logout();" style="margin-left: 0rem;font-weight: bolder;border: 1px solid white;margin-top: 5px;margin-bottom: 3px;" onclick="location.href='index.html'"><img src="/images/logout.jpg" style="height: 8px; height: 12px;border-radius: 10rem;border: 1px solid white;margin-bottom: 0.2rem;"> <span>LOG OUT</span>
+                        <div id="main_container" style="display:none;">
+                          
+            </div>
+            </button>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+</body>
+
+</html>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="mainpopup" tabindex="-1" role="dialog" aria-labelledby="mainpopupLabel" aria-hidden="true" data-close="10" data-open="2" data-href="https://www.anitur.com.tr/popup/test-6-text">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+                <h4 class="modal-title" id="memberModalLabel" style="color: #161b22; font-size: 16px;"><span style="font-weight: bolder;">HEY, </span> <span class="name" style="color: #161b22;"></span><span style="color: #161b22; font-weight: bolder;"> WELCOME.</span></h4>
+            </div>
+            <div class="modal-body">
+                <span style="text-align:center;font-weight: bolder;color: #0e52b1;"> FIRSTLY, CHECK YOUR RESULTS.</span><br> <span><a style="font-weight: bolder;" href="https://results.bmsce.in/"><img src="/images/link.png" alt="" style="width: 30px;height: 30px; border-radius: 10rem;margin-right: 1rem;">results.bmsce.ac.in</a></span>
+            </div>
+
+            <div class="modal-footer text-center">
+                <span class="will-close" style="color: red;font-weight: bolder;text-align: center;">TAP ANYWHERE ON SCREEN TO CLOSE!</span>
+
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div id="preloader">
+    <div id="loader-img">
+        <div id="loader" style="border-radius: 10rem;"></div>
+    </div>
+</div>
+
+
+<div class="text-center" style="margin-right: 0.5rem;font-size: 18px;">
+    <p style="color: white;margin-top:4.4rem;margin-bottom:2rem;"></p><img src="/assets/images/user-logo.png" alt="loading" style="border-radius: 
+    10rem; height: 40px;width: 40px;border: 1px solid #161b22;margin-top: -0.5rem;"> <span style="color:#3ae277;margin-right: 2rem;" id="user1">USER : </span><span class="name" style="
+    margin-left:-1.5rem;margin-bottom:-2rem;color:#5cd1ff;padding-bottom: -1rem;"></span><span style="color:#5cd1ff;font-weight:bolder"> - </span><span id="usn" style="
+    margin-bottom:-2rem;color:#5cd1ff;padding-bottom: -1rem;"></span>
+</div>
+
+<center>
+    <div class="card disabled" style="width: 19rem;text-transform: uppercase;margin-top: 1rem;" aria-disabled="true">
+
+        <div class="card-body" style="pointer-events: none;">
+            <h5 class="card-title"> <b>VISITORS COUNT</b></h5>
+            <center>
+                <!-- hitwebcounter Code START -->
+                <a href="https://www.hitwebcounter.com" target="_blank">
+                    <img src="https://hitwebcounter.com/counter/counter.php?page=7808228&style=0005&nbdigits=6&type=ip&initCount=0" title="Free Counter" Alt="web counter" border="0" /></a>
+            </center>
+
+        </div>
+    </div>
+
+</center>
+<div class="content">
+    <!-- hitwebcounter Code START -->
+
+    <div class="container-center" style="margin: 1rem;">
+        <div class="row">
+            <div class="col-md-4" id="container" style="z-index: 1;margin-bottom: 1.5rem;">
+                <div class="blog-card blog-card-blog">
+                    <div class="blog-card-image">
+                        <img src="/assets/images/sgpa-main.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div>
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;"> 1</h6>
+                        <h4 class="blog-card-caption">
+                            <a href="#">SGPA CALCULATOR</a>
+                        </h4>
+                        <p class="blog-card-description">Here the Students can calculate Their the SGPA by entering the Marks Directly and download same for reference.</p>
+                        <div class="ftr">
+                            <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                               <b>SGPA CALCULATOR</b>   
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/1st year/sgpa-phy.html">PHYSICS CYCLE</a></li>
+                                    <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/1st year/sgpa-chem.html">CHEMISTRY CYCLE</a></li>
+                                    <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/3rd-sem.html">III SEMESTER</a></li>
+                                    <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/4th-sem.html">IV SEMESTER</a></li>
+                                    <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/5th-sem.html">V SEMESTER</a></li>
+                                    <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/6th-sem.html">VI SEMESTER</a></li>
+                                    <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/7th-sem.html">VII SEMESTER</a></li>
+                                    <li><a class="dropdown-item" style="font-weight: bold;" href="/sgpa/semesters/8th-sem.html">VIII SEMESTER</a></li>
+                                </ul>
+                            </div>
+                            <div class="author">
+                                <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4" id="container" style="z-index: 1;margin-bottom: 1.5rem;">
+                <div class="blog-card blog-card-blog">
+                    <div class="blog-card-image">
+                        <img src="/assets/images/cgpa-main.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div>
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;">2</h6>
+                        <h4 class="blog-card-caption">
+                            <a href="#">CGPA CALCULATOR</a>
+                        </h4>
+                        <p class="blog-card-description">Here the Students can calculate their CGPA till Their cleared Semesters and download the same for future reference.</p>
+                        <div class="ftr">
+                            <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                               <b> CGPA CALCULATOR</b>  
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-cse.html">CSE BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-ise.html">ISE BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-etc.html">ETC BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-ece.html">ECE BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-eee.html">EEE BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-eie.html">EIE BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-mech.html">MECHANICAL BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-me.html">MEDICAL ELECTRONICS BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-iem.html">IEM BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-chem.html">CHEMICAL BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-civil.html">CIVIL BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-bio.html">BIOTECH BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-aiml.html">AI AND ML BRANCH</a></li>
+                                    <li><a class="dropdown-item" href="/cgpa/cgpa-ae.html">AEROSPACE BRANCH</a></li>
+                                </ul>
+                            </div>
+                            <div class="author">
+                                <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" id="container" style="margin-bottom: 1.5rem;">
+                <div class="blog-card blog-card-blog">
+                    <div class="blog-card-image">
+                        <img src="/assets/images/percentage.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div>
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;">3</h6>
+                        <h4 class="blog-card-caption">
+                            <a href="#">PERCENTAGE CALCULATOR</a>
+                        </h4>
+                        <p class="blog-card-description">Here The Students can calculate the Percentage from the CGPA Results and download the same for Future reference.</p>
+                        <div class="ftr">
+                            <div>
+                                <button class="btn btn-success" type="button" onclick="window.location.href='#'">
+                                 <b>% CALCULATOR</b> 
+                                </button>
+
+                            </div>
+                            <div class="author">
+                                <div class="author">
+                                    <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" id="container" style="margin-bottom: 1.5rem;">
+                <div class="blog-card blog-card-blog">
+                    <div class="blog-card-image">
+                        <img src="/assets/images/profile-main.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div>
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;">4</h6>
+                        <h4 class="blog-card-caption">
+                            <a href="#">USER PROFILE</a>
+                        </h4>
+                        <p class="blog-card-description">Here The Students can Check all the saved / updated data of all semesters and download the same.</p>
+                        <div class="ftr">
+                            <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                               <b> USER PROFILE</b>  
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="/nav-items/User-Profile-Cgpa.html">CGPA DATA</a></li>
+                                    <li><a class="dropdown-item" href="/nav-items/User-Profile-Sgpa.html">SGPA DATA</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="author">
+                                <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" id="container" style="margin-bottom: 1.5rem;">
+                <div class="blog-card blog-card-blog">
+                    <div class="blog-card-image">
+                        <img src="/assets/images/how-to-use.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div>
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;">5</h6>
+                        <h4 class="blog-card-caption">
+                            <a href="#">HOW TO USE</a>
+                        </h4>
+                        <p class="blog-card-description">Here The Students can read an article which gives a clear explaination on how to use this site.</p>
+                        <div class="ftr">
+                            <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                               <b> HOW TO USE</b>  
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <a class="dropdown-item" href="/nav-items/how-to-use.html"> </a> READ </li>
+
+
+                                </ul>
+                            </div>
+                            <div class="author">
+                                <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" id="container" style="margin-bottom: 1.5rem;">
+                <div class="blog-card blog-card-blog">
+                    <div class="blog-card-image">
+                        <img src="/assets/images/1sr-yr.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div>
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;">6</h6>
+                        <h4 class="blog-card-caption">
+                            <a href="#">I YEAR RESOURCES</a>
+                        </h4>
+                        <p class="blog-card-description">Here The Students in 1st year can check for the required study materials and utilise them.</p>
+                        <div class="ftr">
+                            <div>
+                                <button class="btn btn-success" type="button" onclick="window.location.href='/1st-year/homepage1styear.html'">
+                                 <b>OPEN RESOURCES</b> 
+                                </button>
+
+                            </div>
+                            <div class="author">
+                                <div class="author">
+                                    <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" id="container" style="margin-bottom: 2rem;">
+                <div class="blog-card blog-card-blog">
+                    <div class="blog-card-image">
+                        <img src="/assets/images/contact-main.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div>
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;">7</h6>
+                        <h4 class="blog-card-caption">
+                            <a href="#">CONTACT ME </a>
+                        </h4>
+                        <p class="blog-card-description">Here You can contact Me for any issues and Changes related to this Website.</p>
+                        <div class="ftr">
+                            <div>
+                                <button class="btn btn-success" type="button" onclick="window.location.href='contactme.html'">
+                                    <b>CONTACT ME</b> 
+                                   </button>
+
+                            </div>
+                            <div class="author">
+                                <div class="author">
+                                    <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" id="container" style="margin-bottom: 2rem;">
+                <div class="blog-card blog-card-blog">
+                    <div class="blog-card-image">
+                        <img src="/assets/images/results-main.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div>
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;">8</h6>
+                        <h4 class="blog-card-caption">
+                            <a href="#">RESULTS</a>
+                        </h4>
+                        <p class="blog-card-description">This simple directs the user to BMSCE'S Official Site and The Colleges Official Site.</p>
+                        <div class="ftr">
+                            <div>
+                                <button class="btn btn-success" type="button" onclick="location.href='https://results.bmsce.in/'">
+                                    <b> OPEN LINK</b> 
+                                   </button>
+
+                            </div>
+                            <div class="author">
+                                <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="main_container" style="display:none;">
+                <button onclick="mainApp.logout();">logout</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="wrapper">
+
+    <div id="header">
+    </div>
+    <!-- #header -->
+
+    <div id="content">
+    </div>
+    <!-- #content -->
+
+    <div id="footer"><b><i class="fa fa-copyright" aria-hidden="true"></i></b> Copyright
+        <script>
+            document.write(new Date().getFullYear())
+        </script>. All Rights Reserved <br>Created By <a href="/nav-items/contactme.html" style="color: hsl(197, 100%, 55%);font-size: 15px;"><b> Karthik.S</b></a> (UG CSE BMSCE)</p>
+
+    </div>
+    <!-- #footer -->
+
+</div>
+<a href="whatsapp://send?text=Link : https://bmscesgpacalculator.netlify.app/" class="float">
+    <div aria-hidden="true " class="resp-sharing-button__icon resp-sharing-button__icon--solid ">
+        <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24 ">
+            <path
+                d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1
+    0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2
+    0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z " />
+        </svg>
+    </div>
+</a>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+
+<script>
+    var fireBase = fireBase || firebase;
+    var hasInit = false;
+    var firebaseConfig = {
+        apiKey: "AIzaSyCpcjpxkweTw7EasJ9n--ohfTrz629HsXY",
+        authDomain: "bmsce-sgpa-calculator-e2854.firebaseapp.com",
+        projectId: "bmsce-sgpa-calculator-e2854",
+        storageBucket: "bmsce-sgpa-calculator-e2854.appspot.com",
+        messagingSenderId: "1057810286679",
+        appId: "1:1057810286679:web:e471bcd883b6e1a750fb12",
+        measurementId: "G-7PH1CRW089"
+
+
+
+    };
+    // Initialize Firebase
+
+    if (!hasInit) {
+        firebase.initializeApp(firebaseConfig);
+        hasInit = true;
+    }
+</script>
+<script>
+    var mainApp = {};
+    (function() {
+        var mainContainer = document.getElementById("main_container");
+
+        var logtout = function() {
+            firebase.auth().signOut().then(function() {
+                console.log('success');
+                window.location.replace("index.html");
+            }, function() {})
+        }
+
+        var init = function() {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    // User is signed in.
+                    console.log("stay");
+                    mainContainer.style.display = "";
+                } else {
+                    // No user is signed in.
+                    mainContainer.style.display = "none";
+                    console.log("redirect");
+                    window.location.replace("index.html");
+                }
+            });
+        }
+
+        init();
+
+        mainApp.logout = logtout;
+    })();
+</script>
+
+<script>
+    let name = localStorage.getItem("name-key");
+    let usn = localStorage.getItem("usn-key");
+    document.getElementById("usn").innerHTML = usn;
+    for (let i = 0; i < document.getElementsByClassName("name").length; i++) {
+        document.getElementsByClassName("name")[i].innerHTML = name
+    }
+</script>
+<script>
+    document.onreadystatechange = function() {
+        if (document.readyState === "complete") {
+            $("#panel_left").addClass("panel_left");
+            $("#panel_right").addClass("panel_right");
+            $("#loader").addClass("loaded-circle");
+            $("#loader-img").addClass("loaded-img");
+            $("#preloader").addClass("loaded-img");
+        }
+    }
+</script>
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+</body>
+
+
+</script>
+<!-- <a href="contactUs.html " id="icon " class="fa fa-envelope " style="font-size: 27px; "></a> -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
+
+<script>
+    $(function() {
+        var popup = $('#mainpopup');
+        var time = $(".will-close strong");
+        var closeSeconds = $("#mainpopup").attr("data-close");
+        var openSeconds = $("#mainpopup").attr("data-open");
+        var dataSrc = $("#mainpopup").attr("data-href");
+
+
+        setTimeout(function(e) {
+
+            popup.modal('show');
+            time.html(closeSeconds);
+
+            setInterval(function() {
+                time.html(closeSeconds);
+                closeSeconds--;
+
+                if (closeSeconds < 0) {
+                    popup.modal('hide');
+                }
+
+            }, 1000)
+
+        }, openSeconds * 1000);
+
+        $.ajax({
+            url: dataSrc,
+            dataType: "html",
+            success: function(data) {
+                $(".modal-body").html(data);
+            }
+        });
+
+
+    });
+</script>
+
+
+</html>
